@@ -128,6 +128,77 @@
   </div>
 </section>
 
+<!-- CONTACT FORM -->
+<section id="form" class="contact-form-section">
+  <div class="shell">
+    <div class="form-head">
+      <div>
+        <div class="contact-cell__num">[FORM] &nbsp;TELL US ABOUT YOUR PROJECT</div>
+        <h2>Send a quick brief.</h2>
+      </div>
+      <p>
+        Pick a tier, give us a few details, and we'll reply within 48 hours
+        with the next step. No 14-field interrogation.
+      </p>
+    </div>
+    <form class="contact-form" action="mailto:hello@websmith.co" method="post" enctype="text/plain">
+      <div class="form-row">
+        <label>
+          <span class="form__label">Your name</span>
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          <span class="form__label">Business name</span>
+          <input type="text" name="business" />
+        </label>
+      </div>
+      <div class="form-row">
+        <label>
+          <span class="form__label">Email</span>
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          <span class="form__label">Phone</span>
+          <input type="tel" name="phone" />
+        </label>
+      </div>
+      <label class="full">
+        <span class="form__label">Tier of interest</span>
+        <select name="tier" id="tierSelect">
+          <option value="">— Select a tier —</option>
+          <option value="bronze">Bronze · Maintenance</option>
+          <option value="silver">Silver · Growth</option>
+          <option value="gold">Gold · Domination</option>
+          <option value="not-sure">Not sure yet — talk it through</option>
+        </select>
+      </label>
+      <label class="full">
+        <span class="form__label">What you need</span>
+        <textarea name="message" rows="5" placeholder="A few lines on your business, your current GBP, and what you're hoping to achieve."></textarea>
+      </label>
+      <button type="submit" class="btn btn--accent form__submit">
+        Send brief <span class="btn__arrow">→</span>
+      </button>
+    </form>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var tier = (params.get('tier') || '').toLowerCase();
+    if (!tier) return;
+    var sel = document.getElementById('tierSelect');
+    if (!sel) return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === tier) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+  })();
+</script>
+
 <!-- META GRID -->
 <div class="shell">
   <div class="meta-grid">

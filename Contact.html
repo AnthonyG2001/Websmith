@@ -141,7 +141,8 @@
         with the next step. No 14-field interrogation.
       </p>
     </div>
-    <form class="contact-form" action="mailto:contact@softwarestrategists.com" method="post" enctype="text/plain">
+    <form class="contact-form" data-form="contact" novalidate>
+      <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true" />
       <div class="form-row">
         <label>
           <span class="form__label">Your name</span>
@@ -163,12 +164,12 @@
         </label>
       </div>
       <label class="full">
-        <span class="form__label">Tier of interest</span>
-        <select name="tier" id="tierSelect">
-          <option value="">— Select a tier —</option>
-          <option value="bronze">Bronze · Maintenance</option>
-          <option value="silver">Silver · Growth</option>
-          <option value="gold">Gold · Domination</option>
+        <span class="form__label">Plan of interest</span>
+        <select name="plan" id="planSelect">
+          <option value="">— Select a plan —</option>
+          <option value="standard">Standard · Growth</option>
+          <option value="flagship">Flagship · Domination</option>
+          <option value="flagship-ads">Flagship + Ad Spend Management</option>
           <option value="not-sure">Not sure yet — talk it through</option>
         </select>
       </label>
@@ -179,6 +180,7 @@
       <button type="submit" class="btn btn--accent form__submit">
         Send brief <span class="btn__arrow">→</span>
       </button>
+      <div class="form__status" data-form-status role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
@@ -186,12 +188,12 @@
 <script>
   (function () {
     var params = new URLSearchParams(window.location.search);
-    var tier = (params.get('tier') || '').toLowerCase();
-    if (!tier) return;
-    var sel = document.getElementById('tierSelect');
+    var plan = (params.get('plan') || params.get('tier') || '').toLowerCase();
+    if (!plan) return;
+    var sel = document.getElementById('planSelect');
     if (!sel) return;
     for (var i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].value === tier) {
+      if (sel.options[i].value === plan) {
         sel.selectedIndex = i;
         break;
       }
@@ -283,6 +285,8 @@
     </div>
   </div>
 </footer>
+
+<script src="forms.js" defer></script>
 
 </body>
 </html>

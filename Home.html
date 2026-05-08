@@ -55,7 +55,8 @@
       </div>
 
       <aside class="lead__right">
-        <form class="lead__form" action="mailto:contact@softwarestrategists.com" method="post" enctype="text/plain">
+        <form class="lead__form" data-form="lead" novalidate>
+          <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true" />
           <h2 class="lead__form-title">Claim your free audit</h2>
           <p class="lead__form-sub">Takes 30 seconds. We'll send your report within 1 hour.</p>
 
@@ -96,6 +97,8 @@
           <button type="submit" class="lead__cta">
             Get my free audit <span>→</span>
           </button>
+
+          <div class="form__status" data-form-status role="status" aria-live="polite"></div>
 
           <div class="lead__assure">
             <span class="lead__assure-dot"></span> We'll never share your info or spam you
@@ -724,6 +727,8 @@
     }, 4500);
   })();
 </script>
+
+<script src="forms.js" defer></script>
 
 </body>
 </html>

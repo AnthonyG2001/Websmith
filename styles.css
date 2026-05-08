@@ -308,6 +308,20 @@ img, svg { display: block; max-width: 100%; }
   display: inline-block;
 }
 
+/* ---------- form status (Resend submission feedback) ---------- */
+
+.form__status {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  min-height: 18px;
+  margin-top: 8px;
+  color: var(--ink-dim);
+}
+.form__status--ok { color: var(--accent); }
+.form__status--err { color: var(--bad); }
+
 /* ---------- responsive cap ---------- */
 
 @media (max-width: 900px) {

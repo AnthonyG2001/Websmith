@@ -1,7 +1,5 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const TO = 'contact@softwarestrategists.com';
 const FROM = process.env.RESEND_FROM || 'SoftwareStrategists <onboarding@resend.dev>';
 
@@ -85,6 +83,7 @@ export default async function handler(req, res) {
     .join('\n');
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const result = await resend.emails.send({
       from: FROM,
       to: [TO],

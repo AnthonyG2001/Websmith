@@ -121,14 +121,16 @@ img, svg { display: block; max-width: 100%; }
 .brand__mark {
   width: 22px;
   height: 22px;
-  background: var(--accent);
   position: relative;
+  transform: rotate(45deg);
+  border: 2px solid var(--accent);
+  background: transparent;
 }
 .brand__mark::after {
   content: "";
   position: absolute;
-  inset: 6px;
-  background: var(--bg);
+  inset: 4px;
+  background: var(--accent);
 }
 
 .brand__slash {

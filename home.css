@@ -71,7 +71,6 @@
 }
 
 .hero__title .underline {
-  background: linear-gradient(transparent 65%, var(--accent) 65%, var(--accent) 95%, transparent 95%);
   padding: 0 4px;
 }
 

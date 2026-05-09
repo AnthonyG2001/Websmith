@@ -1027,6 +1027,7 @@
   .seo__head, .services__head, .contact-strip__inner { grid-template-columns: 1fr; gap: 24px; padding: 56px 0; }
   .seo__grid { grid-template-columns: 1fr; }
   .seo__cell { padding: 24px 18px; }
+  .seo__cell--serp { display: none; }
   .gauges { grid-template-columns: 1fr 1fr; }
 
   /* keyword tracker — drop the bar column on mobile, tighten the rest */

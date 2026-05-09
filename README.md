@@ -19,7 +19,7 @@ Live: https://softwarestrategists.vercel.app
 
 ```
 .
-├── Home.html           # Landing — free-audit lead form + hero + SERP demo
+├── index.html          # Landing — free-audit lead form + hero + SERP demo
 ├── Services.html       # Two plans (Standard / Flagship) + Ad-spend add-on
 ├── Contact.html        # Phone, email, hours, brief form
 ├── styles.css          # Shared tokens, nav, footer, buttons, form status
@@ -67,7 +67,7 @@ There's no build step. To preview the static site locally:
 
 ```bash
 python -m http.server 8000
-# open http://localhost:8000/Home.html
+# open http://localhost:8000
 ```
 
 To run the Resend function locally as well, use the Vercel CLI:
@@ -75,7 +75,7 @@ To run the Resend function locally as well, use the Vercel CLI:
 ```bash
 npm install
 npx vercel dev
-# open http://localhost:3000/Home.html
+# open http://localhost:3000
 ```
 
 You'll need a `.env` file with `RESEND_API_KEY=re_...` (gitignored).
@@ -88,7 +88,7 @@ repo is served as static files.
 
 ## Updating content
 
-- **Phone / email / hours / location**: update across `Home.html`,
+- **Phone / email / hours / location**: update across `index.html`,
   `Services.html`, and `Contact.html` — and the meta-grid block on
   Contact.
 - **Plan features**: edit the two `<article class="tier">` blocks in

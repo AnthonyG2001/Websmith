@@ -95,17 +95,11 @@ export default async function handler(req, res) {
 
     if (result.error) {
       console.error('Resend error:', result.error);
-      return res.status(502).json({
-        error: 'Email service rejected the request.',
-        details: result.error.message || result.error.name || String(result.error),
-      });
+      return res.status(502).json({ error: 'Email service rejected the request.' });
     }
     return res.status(200).json({ ok: true });
   } catch (e) {
     console.error('Send failed:', e);
-    return res.status(500).json({
-      error: 'Could not send right now. Please email us directly.',
-      details: e && e.message ? e.message : String(e),
-    });
+    return res.status(500).json({ error: 'Could not send right now. Please email us directly.' });
   }
 }

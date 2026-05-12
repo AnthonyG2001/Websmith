@@ -240,10 +240,11 @@
 .tier__best {
   margin-bottom: 28px;
 }
-.tier__best h4,
-.tier__included h4 {
+.tier__best h3,
+.tier__included h3 {
   font-family: var(--f-mono);
   font-size: 10px;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-mute);
@@ -462,7 +463,7 @@
   color: var(--ink-mute);
   margin-bottom: 24px;
 }
-.contact-cell h3 {
+.contact-cell h2 {
   font-family: var(--f-display);
   font-size: clamp(24px, 4vw, 32px);
   font-weight: 500;
@@ -550,9 +551,10 @@
   border-right: 1px solid var(--line);
 }
 .meta-cell:last-child { border-right: 0; }
-.meta-cell h4 {
+.meta-cell h3 {
   font-family: var(--f-mono);
   font-size: 10px;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-mute);
@@ -640,6 +642,9 @@
   outline: none;
   transition: border-color 0.15s;
   border-radius: 0;
+  /* Reserve box height so font-swap/load can't shift form layout below */
+  min-height: 50px;
+  line-height: 1.4;
 }
 .contact-form input:focus,
 .contact-form select:focus,
@@ -718,7 +723,7 @@
 
 @media (max-width: 480px) {
   .page-hero { padding: 40px 0 32px; }
-  .contact-cell h3 { font-size: 22px; }
+  .contact-cell h2 { font-size: 22px; }
   .contact-method { padding: 22px 18px; }
   .contact-method__value { font-size: 18px; }
   .tier { padding: 28px 20px 28px; }

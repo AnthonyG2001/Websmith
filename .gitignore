@@ -5,3 +5,13 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+
+# MCP server config — contains plaintext API credentials, never commit
+.mcp.json
+
+# Stray live-server / preview-tool artifacts (filename pattern is a Windows temp path with backslashes stripped)
+UsersTivonAppDataLocalTemplive-check.html
+*-live-check.html
+
+# Agent run metadata — local working context, not project content
+.claude/

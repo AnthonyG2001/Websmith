@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      .display { font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; letter-spacing: -0.03em; }
+      .mono    { font-family: 'JetBrains Mono', 'Courier New', monospace; letter-spacing: 0.1em; }
+      .body    { font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="#0B0B0B"/>
+
+  <!-- subtle horizontal rule grid -->
+  <line x1="0"   y1="80"  x2="1200" y2="80"  stroke="#262626" stroke-width="1"/>
+  <line x1="0"   y1="550" x2="1200" y2="550" stroke="#262626" stroke-width="1"/>
+
+  <!-- top-left brand mark (rotated square with inner fill, mirror of brand__mark) -->
+  <g transform="translate(80, 36) rotate(45 16 16)">
+    <rect x="0" y="0" width="32" height="32" fill="none" stroke="#BFF135" stroke-width="3"/>
+    <rect x="8" y="8" width="16" height="16" fill="#BFF135"/>
+  </g>
+  <text class="display" x="135" y="56" font-size="20" fill="#F2F1ED">SOFTWARESTRATEGISTS</text>
+  <text class="mono" x="430" y="56" font-size="13" fill="#6E6B63">/  EST. 2026</text>
+
+  <!-- top-right eyebrow -->
+  <g>
+    <rect x="920" y="42" width="8" height="8" fill="#BFF135"/>
+    <text class="mono" x="938" y="55" font-size="13" fill="#BFF135">LOCAL SEO &#183; WEBSITES &#183; GBP</text>
+  </g>
+
+  <!-- main headline (three lines, mirror of hero) -->
+  <text class="display" x="80" y="240" font-size="86" fill="#F2F1ED">Better websites.</text>
+  <text class="display" x="80" y="340" font-size="86" fill="#F2F1ED">More <tspan fill="#BFF135" text-decoration="underline">clients</tspan>.</text>
+  <text class="display" x="80" y="440" font-size="86" fill="#F2F1ED"><tspan text-decoration="line-through" fill="#6E6B63">Less</tspan> work for you.</text>
+
+  <!-- divider line above footer band -->
+  <line x1="80" y1="520" x2="1120" y2="520" stroke="#262626" stroke-width="1"/>
+
+  <!-- footer band (mono row) -->
+  <g>
+    <rect x="80" y="560" width="8" height="8" fill="#BFF135"/>
+    <text class="mono" x="98" y="568" font-size="13" fill="#A6A39B">REDLANDS, CA &#183; INLAND EMPIRE</text>
+
+    <rect x="430" y="560" width="8" height="8" fill="#BFF135"/>
+    <text class="mono" x="448" y="568" font-size="13" fill="#A6A39B">30-DAY SETUP &#183; NO CONTRACTS</text>
+
+    <text class="mono" x="1120" y="568" font-size="13" fill="#F2F1ED" text-anchor="end">SOFTWARESTRATEGISTS.COM &#8594;</text>
+  </g>
+</svg>

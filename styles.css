@@ -2,7 +2,39 @@
    WebSmith — brutalist raw, dark base, electric-lime accent
 ------------------------------------------------------------------ */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* font-display: optional prevents font-swap layout shift —
+   if the font isn't loaded within ~100ms, the system fallback is used
+   for the entire page life and no swap (hence no CLS) occurs.
+   Combined with size-adjust fallbacks below, the visual delta is minimal. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=optional');
+
+/* Fallback fonts with size-adjust to closely match the metrics of the web fonts.
+   These render instantly using system fonts but at adjusted x-height/width
+   so the box dimensions don't shift when the real font loads (or doesn't). */
+@font-face {
+  font-family: "Space Grotesk Fallback";
+  src: local("Arial");
+  size-adjust: 97%;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Inter Tight Fallback";
+  src: local("Arial");
+  size-adjust: 100%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "JetBrains Mono Fallback";
+  src: local("Courier New"), local("Courier");
+  size-adjust: 96%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
 
 :root {
   --bg:        #0B0B0B;
@@ -12,15 +44,15 @@
   --line-2:    #1c1c1c;
   --ink:       #F2F1ED;
   --ink-dim:   #A6A39B;
-  --ink-mute:  #6E6B63;
+  --ink-mute:  #8E8B82;  /* bumped from #6E6B63 (3.7:1) to 5.78:1 vs --bg for WCAG AA */
   --accent:    oklch(0.92 0.22 130);   /* electric lime */
   --accent-d:  oklch(0.78 0.22 130);
   --warn:      oklch(0.78 0.18 50);    /* amber */
   --bad:       oklch(0.68 0.22 25);    /* red */
 
-  --f-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --f-body:    "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-  --f-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  --f-display: "Space Grotesk", "Space Grotesk Fallback", ui-sans-serif, system-ui, sans-serif;
+  --f-body:    "Inter Tight", "Inter Tight Fallback", ui-sans-serif, system-ui, sans-serif;
+  --f-mono:    "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, "SFMono-Regular", monospace;
 
   --maxw: 1440px;
   --pad:  32px;
@@ -227,9 +259,10 @@ img, svg { display: block; max-width: 100%; }
   padding: 56px 0;
 }
 
-.footer__col h4 {
+.footer__col h3 {
   font-family: var(--f-mono);
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-dim);

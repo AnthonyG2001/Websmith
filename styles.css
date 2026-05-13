@@ -210,6 +210,154 @@ img, svg { display: block; max-width: 100%; }
 }
 .nav__cta:hover { background: var(--ink); }
 
+/* ---------- nav dropdowns (Industries / Locations) ---------- */
+/* Phase 3 addition. Desktop = hover/focus-within reveal of an absolutely-positioned
+   panel. Mobile (<900px) = tap-to-toggle accordion via nav.js. All tokens reused;
+   no new colors introduced. */
+
+/* Make .nav__links a positioning context for dropdown panels. */
+.nav__links { position: relative; align-items: center; }
+
+/* Treat plain text-link nav items as inline so they line up with the buttons. */
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  height: 64px;
+}
+
+/* The dropdown container — wraps the trigger button and the hidden panel. */
+.nav__dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 64px;
+}
+
+/* The dropdown trigger — looks like a nav__links anchor but is a <button>. */
+.nav__dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 64px;
+  padding: 0;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.nav__dropdown-trigger:hover,
+.nav__dropdown-trigger:focus-visible,
+.nav__dropdown-trigger.is-active {
+  color: var(--ink);
+  outline: none;
+}
+.nav__dropdown-trigger.is-active {
+  position: relative;
+}
+.nav__dropdown-trigger.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px; background: var(--accent);
+}
+
+.nav__caret {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 1;
+  transform: translateY(1px);
+  transition: transform 0.15s ease-out;
+}
+
+/* The panel that drops below the trigger. Hidden by default but kept in
+   the DOM for screen readers + keyboard nav. */
+.nav__dropdown-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 6px;
+  min-width: 220px;
+  padding: 8px 0;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out, visibility 0s linear 0.15s;
+}
+
+/* Desktop reveal — hover OR keyboard focus-within OR explicit .is-open (JS). */
+@media (hover: hover) and (min-width: 901px) {
+  .nav__dropdown:hover .nav__dropdown-panel,
+  .nav__dropdown:focus-within .nav__dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out, visibility 0s linear 0s;
+  }
+  .nav__dropdown:hover .nav__caret,
+  .nav__dropdown:focus-within .nav__caret {
+    transform: translateY(1px) rotate(180deg);
+  }
+  .nav__dropdown:hover .nav__dropdown-trigger,
+  .nav__dropdown:focus-within .nav__dropdown-trigger {
+    color: var(--ink);
+  }
+}
+
+/* Mobile + JS-controlled open state (works on both desktop and mobile). */
+.nav__dropdown.is-open .nav__dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out, visibility 0s linear 0s;
+}
+.nav__dropdown.is-open .nav__caret {
+  transform: translateY(1px) rotate(180deg);
+}
+.nav__dropdown.is-open .nav__dropdown-trigger {
+  color: var(--ink);
+}
+
+/* Items inside the panel. */
+.nav__dropdown-item {
+  display: block;
+  padding: 10px 18px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  transition: color 0.12s, background 0.12s;
+  white-space: nowrap;
+}
+.nav__dropdown-item:hover,
+.nav__dropdown-item:focus-visible {
+  color: var(--accent);
+  background: var(--bg);
+  outline: none;
+}
+
+/* The "All industries →" / "All locations →" hub link gets a separator. */
+.nav__dropdown-item--hub {
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 6px;
+}
+.nav__dropdown-item--hub:hover,
+.nav__dropdown-item--hub:focus-visible {
+  color: var(--accent);
+}
+
 /* ---------- buttons ---------- */
 
 .btn {
@@ -250,13 +398,6 @@ img, svg { display: block; max-width: 100%; }
 .footer {
   border-top: 1px solid var(--line);
   margin-top: 0;
-}
-
-.footer__top {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 32px;
-  padding: 56px 0;
 }
 
 .footer__col h3 {
@@ -358,18 +499,106 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---------- responsive cap ---------- */
 
+/* ---------- footer (5-cell grid: brand + 4 content cols) ---------- */
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(4, 1fr);
+  gap: 32px;
+  padding: 56px 0;
+}
+
+/* ---------- responsive cap ---------- */
+
+@media (max-width: 1100px) {
+  /* At narrower desktops, drop the brand column slightly so the 4 link
+     columns get more breathing room. */
+  .footer__top { grid-template-columns: 1fr repeat(4, 1fr); gap: 24px; }
+}
+
 @media (max-width: 900px) {
   :root { --pad: 20px; }
-  .nav__links { display: none; }
-  .nav__inner { gap: 16px; }
+
+  /* Restructure nav__inner into a two-row layout: brand+CTA on top,
+     wrapped link row below. Keeps everything visible without a hamburger. */
+  .nav__inner {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand cta"
+      "links links";
+    height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 12px 16px;
+    align-items: center;
+  }
+  .nav__inner > .brand { grid-area: brand; }
+  .nav__inner > .nav__links { grid-area: links; }
+  .nav__inner > .nav__cta { grid-area: cta; }
+
+  /* Show the nav links row on mobile as a wrapping flex. */
+  .nav__links {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    column-gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+  .nav__link,
+  .nav__dropdown,
+  .nav__dropdown-trigger {
+    height: auto;
+    padding: 6px 0;
+  }
+  .nav__dropdown { display: block; }
+
+  /* Mobile dropdown panel: inline accordion, not floating. */
+  .nav__dropdown-panel {
+    position: static;
+    margin: 6px 0 0 0;
+    min-width: 0;
+    width: 100%;
+    transform: none;
+    transition: opacity 0.15s ease-out, visibility 0s linear 0.15s, max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    border-width: 0;
+  }
+  .nav__dropdown.is-open .nav__dropdown-panel {
+    transform: none;
+    transition: opacity 0.15s ease-out, visibility 0s linear 0s, max-height 0.25s ease-out;
+    max-height: 600px;
+    padding: 4px 0 8px 0;
+    border-width: 0 0 0 2px;
+    border-left-color: var(--accent);
+    border-left-style: solid;
+    margin-left: 4px;
+  }
+  .nav__dropdown-item { padding: 8px 14px; }
+
+  /* On mobile the underline indicator can't sit at the very bottom
+     of the nav row — pin it to the bottom of the trigger instead. */
+  .nav__dropdown-trigger.is-active::after {
+    bottom: -2px;
+  }
+
   .brand { font-size: 16px; min-width: 0; }
   .brand > span:nth-of-type(2) { font-size: 13px; letter-spacing: -0.01em; }
   .brand__slash, .brand .mono { display: none; }
   .nav__cta { padding: 10px 14px; font-size: 11px; letter-spacing: 0.06em; white-space: nowrap; }
-  .footer__top { grid-template-columns: 1fr 1fr; }
+
+  /* Footer collapses 5 cells → 2 cols on tablet. */
+  .footer__top { grid-template-columns: 1fr 1fr; gap: 24px; }
   .footer__bottom { flex-direction: column; gap: 6px; align-items: flex-start; }
 }
 
 @media (max-width: 480px) {
   :root { --pad: 16px; }
+  /* Single column at phone widths. */
+  .footer__top { grid-template-columns: 1fr; }
+  .nav__links { column-gap: 14px; row-gap: 4px; }
 }

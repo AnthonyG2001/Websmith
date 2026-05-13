@@ -182,10 +182,46 @@
       <span class="dim mono" style="font-size:11px;">EST. 2026</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="/">Index</a>
-      <a href="Services.html">Services</a>
-      <a href="/#seo">Method</a>
-      <a href="Contact.html">Contact</a>
+      <a href="/" class="nav__link">Index</a>
+      <a href="Services.html" class="nav__link">Services</a>
+
+      <div class="nav__dropdown">
+        <button type="button" class="nav__dropdown-trigger is-active" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-industries">
+          Industries <span class="nav__caret" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="nav__dropdown-panel" id="dropdown-industries" role="menu">
+          <a href="Industries.html" class="nav__dropdown-item nav__dropdown-item--hub" role="menuitem">All industries &rarr;</a>
+          <a href="Plumbing.html" class="nav__dropdown-item" role="menuitem">Plumbing</a>
+          <a href="HVAC.html" class="nav__dropdown-item" role="menuitem">HVAC</a>
+          <a href="Electrical.html" class="nav__dropdown-item" role="menuitem">Electrical</a>
+          <a href="Roofing.html" class="nav__dropdown-item" role="menuitem">Roofing</a>
+          <a href="WindowCleaning.html" class="nav__dropdown-item" role="menuitem">Window Cleaning</a>
+          <a href="Landscaping.html" class="nav__dropdown-item" role="menuitem">Landscaping</a>
+          <a href="Pool.html" class="nav__dropdown-item" role="menuitem">Pool Service</a>
+          <a href="HomeCleaning.html" class="nav__dropdown-item" role="menuitem">Home Cleaning</a>
+          <a href="GarageDoor.html" class="nav__dropdown-item" role="menuitem">Garage Door</a>
+          <a href="Chimney.html" class="nav__dropdown-item" role="menuitem">Chimney Sweep</a>
+        </div>
+      </div>
+
+      <div class="nav__dropdown">
+        <button type="button" class="nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-locations">
+          Locations <span class="nav__caret" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="nav__dropdown-panel" id="dropdown-locations" role="menu">
+          <a href="Locations.html" class="nav__dropdown-item nav__dropdown-item--hub" role="menuitem">All locations &rarr;</a>
+          <a href="Redlands.html" class="nav__dropdown-item" role="menuitem">Redlands</a>
+          <a href="SanBernardino.html" class="nav__dropdown-item" role="menuitem">San Bernardino</a>
+          <a href="Riverside.html" class="nav__dropdown-item" role="menuitem">Riverside</a>
+          <a href="Ontario.html" class="nav__dropdown-item" role="menuitem">Ontario</a>
+          <a href="Fontana.html" class="nav__dropdown-item" role="menuitem">Fontana</a>
+          <a href="RanchoCucamonga.html" class="nav__dropdown-item" role="menuitem">Rancho Cucamonga</a>
+          <a href="Locations.html" class="nav__dropdown-item nav__dropdown-item--hub" role="menuitem" style="border-top: 1px solid var(--line); margin-top: 4px; padding-top: 12px;">View all 20 cities &rarr;</a>
+        </div>
+      </div>
+
+      <a href="/#seo" class="nav__link">Method</a>
+      <a href="Contact.html" class="nav__link">Contact</a>
     </nav>
     <a href="Contact.html" class="nav__cta">
       Get a free review <span>→</span>
@@ -364,10 +400,6 @@
       <h3>Cities we work in</h3>
       <div class="crosslink-grid">
         <a href="Redlands.html">Redlands</a>
-        <a href="SanBernardino.html">San Bernardino</a>
-        <a href="Riverside.html">Riverside</a>
-        <a href="Pomona.html">Pomona</a>
-        <a href="RanchoCucamonga.html">Rancho Cucamonga</a>
       </div>
     </div>
   </div>
@@ -462,14 +494,31 @@
         <a href="/">Index</a>
         <a href="Services.html">Services</a>
         <a href="Contact.html">Contact</a>
-        <a href="Locations.html">Cities we serve</a>
       </div>
       <div class="footer__col">
-        <h3>Services</h3>
-        <a href="Services.html">Audits &amp; reviews</a>
-        <a href="Services.html">New websites</a>
-        <a href="Services.html">SEO</a>
-        <a href="Services.html">Local / GBP</a>
+        <h3>Industries</h3>
+        <a href="Industries.html">All industries</a>
+        <a href="Plumbing.html">Plumbing</a>
+        <a href="HVAC.html">HVAC</a>
+        <a href="Electrical.html">Electrical</a>
+        <a href="Roofing.html">Roofing</a>
+        <a href="WindowCleaning.html">Window Cleaning</a>
+        <a href="Landscaping.html">Landscaping</a>
+        <a href="Pool.html">Pool Service</a>
+        <a href="HomeCleaning.html">Home Cleaning</a>
+        <a href="GarageDoor.html">Garage Door</a>
+        <a href="Chimney.html">Chimney Sweep</a>
+      </div>
+      <div class="footer__col">
+        <h3>Locations</h3>
+        <a href="Locations.html">All locations</a>
+        <a href="Redlands.html">Redlands</a>
+        <a href="SanBernardino.html">San Bernardino</a>
+        <a href="Riverside.html">Riverside</a>
+        <a href="Ontario.html">Ontario</a>
+        <a href="Fontana.html">Fontana</a>
+        <a href="RanchoCucamonga.html">Rancho Cucamonga</a>
+        <a href="Corona.html">Corona</a>
       </div>
       <div class="footer__col">
         <h3>Get in touch</h3>
@@ -483,6 +532,8 @@
     </div>
   </div>
 </footer>
+
+<script src="nav.js" defer></script>
 
 </body>
 </html>

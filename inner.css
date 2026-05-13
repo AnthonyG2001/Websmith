@@ -105,16 +105,23 @@
 
 .svc-block__detail li {
   font-size: 14px;
+  line-height: 1.55;
   color: var(--ink);
-  padding: 8px 0;
+  padding: 12px 0 12px 24px;
   border-bottom: 1px solid var(--line-2);
-  display: flex;
-  gap: 12px;
+  position: relative;
 }
 .svc-block__detail li::before {
   content: "→";
   color: var(--accent);
   font-family: var(--f-mono);
+  position: absolute;
+  left: 0;
+  top: 12px;
+}
+.svc-block__detail li strong {
+  display: inline;
+  margin-right: 6px;
 }
 
 /* tiers */

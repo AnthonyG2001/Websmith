@@ -1111,3 +1111,515 @@
   .faq summary::after { right: 20px; top: 20px; font-size: 24px; }
   .faq .faq__a { padding: 0 20px 24px 20px; }
 }
+
+/* ============================================================
+   Report page — editorial / data-journalism layout
+   ============================================================
+   Components: .report-hero, .report-pullquote, .report-section,
+   .report-table, .report-chart, .report-callout, .report-footnotes.
+   All additive — no existing rule re-defined. Tokens drawn from
+   styles.css :root.
+*/
+
+/* ---------- .report-hero — opening section with eyebrow / deck / byline ---------- */
+
+.report-hero {
+  padding: 96px 0 64px;
+  border-bottom: 1px solid var(--line);
+}
+.report-hero__eyebrow {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid var(--accent);
+}
+.report-hero h1 {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(36px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  max-width: 1100px;
+  margin-bottom: 36px;
+  overflow-wrap: break-word;
+}
+.report-hero__deck {
+  font-family: var(--f-display);
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--ink-dim);
+  max-width: 880px;
+  margin-bottom: 36px;
+}
+.report-hero__deck strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.report-hero__byline {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-mute);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  max-width: 880px;
+}
+.report-hero__byline span::before {
+  content: "● ";
+  color: var(--accent);
+}
+
+/* ---------- .report-pullquote — accent-bordered hook callout ---------- */
+
+.report-pullquote {
+  margin: 0;
+  padding: 40px 32px 40px 36px;
+  border-left: 4px solid var(--accent);
+  background: var(--bg-2);
+  max-width: 880px;
+  font-family: var(--f-display);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.report-pullquote em { font-style: italic; color: var(--accent); }
+
+/* ---------- .report-section — long-form prose column ---------- */
+
+.report-section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--line);
+}
+.report-section__num {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 16px;
+  display: block;
+}
+.report-section h2 {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  max-width: 880px;
+  margin-bottom: 32px;
+  overflow-wrap: break-word;
+}
+.report-section h3 {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(20px, 2.2vw, 26px);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--ink);
+  max-width: 780px;
+  margin: 40px 0 16px;
+  overflow-wrap: break-word;
+}
+.report-section__prose {
+  max-width: 760px;
+}
+.report-section__prose p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-dim);
+  margin-bottom: 22px;
+}
+.report-section__prose p strong { color: var(--ink); font-weight: 600; }
+.report-section__prose p em { color: var(--accent); font-style: italic; }
+.report-section__prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.report-section__prose a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--accent);
+}
+.report-section__prose ul,
+.report-section__prose ol {
+  list-style: none;
+  margin: 0 0 22px 0;
+  padding: 0;
+}
+.report-section__prose ul li,
+.report-section__prose ol li {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-dim);
+  padding: 8px 0 8px 24px;
+  position: relative;
+}
+.report-section__prose ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  color: var(--accent);
+  font-family: var(--f-mono);
+  font-size: 14px;
+}
+.report-section__prose ol {
+  counter-reset: ol;
+}
+.report-section__prose ol li {
+  counter-increment: ol;
+}
+.report-section__prose ol li::before {
+  content: counter(ol) ".";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  color: var(--accent);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.report-section__note {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-mute);
+  margin-top: 16px;
+  max-width: 760px;
+  line-height: 1.5;
+}
+
+/* ---------- .report-table — wide data table ---------- */
+
+.report-table-wrap {
+  overflow-x: auto;
+  margin: 16px 0 12px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.report-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-family: var(--f-body);
+}
+.report-table thead th {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-align: left;
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+.report-table tbody td {
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--line-2);
+  color: var(--ink);
+  line-height: 1.4;
+  vertical-align: top;
+}
+.report-table tbody tr:last-child td { border-bottom: 0; }
+.report-table tbody tr:hover { background: var(--bg); }
+.report-table td.num,
+.report-table th.num {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.report-table td a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-mute);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.report-table td a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+.report-table strong { color: var(--accent); font-weight: 600; }
+.report-table .pack-open { color: var(--accent); }
+.report-table .pack-defended { color: var(--ink); }
+.report-table .pack-contested { color: var(--ink-dim); }
+.report-table .pack-fragmented { color: var(--ink-dim); }
+.report-table .pack-crowded { color: var(--warn); }
+.report-table__caption {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+}
+.report-table__footnote {
+  font-size: 13px;
+  color: var(--ink-mute);
+  font-style: italic;
+  margin: 14px 0 4px;
+  max-width: 760px;
+  line-height: 1.5;
+}
+
+/* ---------- .report-table--key — small "pack character" legend ---------- */
+
+.report-table-key {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  margin: 24px 0 12px;
+}
+.report-table-key__item {
+  padding: 16px 18px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+.report-table-key__item strong {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ---------- .report-chart — inline SVG wrapper ---------- */
+
+.report-chart {
+  margin: 32px 0 8px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  padding: 32px 24px 24px;
+}
+.report-chart__title {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.report-chart__subtitle {
+  font-family: var(--f-display);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 20px;
+  line-height: 1.3;
+  max-width: 780px;
+}
+.report-chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.report-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-mute);
+}
+.report-chart__legend-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ---------- .report-callout — accent-bordered citation block ---------- */
+
+.report-callout {
+  border: 1px solid var(--accent);
+  background: var(--bg-2);
+  padding: 36px 36px;
+  margin: 16px 0 8px;
+  max-width: 880px;
+  position: relative;
+}
+.report-callout::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent);
+}
+.report-callout__label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: block;
+}
+.report-callout__lead {
+  font-family: var(--f-display);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.report-callout__lead strong { color: var(--accent); }
+.report-callout p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-dim);
+  margin-bottom: 14px;
+}
+.report-callout p:last-child { margin-bottom: 0; }
+.report-callout blockquote {
+  margin: 16px 0;
+  padding: 16px 20px;
+  border-left: 2px solid var(--ink-mute);
+  font-family: var(--f-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  line-height: 1.55;
+  background: var(--bg);
+}
+.report-callout__contact {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.report-callout__contact a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.report-callout__sla {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 12px;
+  display: block;
+}
+
+/* ---------- .report-footnotes — compact numbered sources list ---------- */
+
+.report-footnotes {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  max-width: 880px;
+  counter-reset: fn;
+  border-top: 1px solid var(--line);
+}
+.report-footnotes li {
+  counter-increment: fn;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  padding: 12px 0 12px 44px;
+  border-bottom: 1px solid var(--line-2);
+  position: relative;
+  overflow-wrap: anywhere;
+}
+.report-footnotes li::before {
+  content: counter(fn, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 12px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 600;
+}
+.report-footnotes li .fn-city {
+  color: var(--ink);
+  font-weight: 500;
+  margin-right: 10px;
+}
+.report-footnotes li .fn-key {
+  color: var(--ink-mute);
+}
+
+/* ---------- responsive — report additions ---------- */
+
+@media (max-width: 900px) {
+  .report-hero { padding: 56px 0 40px; }
+  .report-hero h1 { font-size: clamp(34px, 9vw, 56px); }
+  .report-section { padding: 48px 0; }
+  .report-section h2 { font-size: clamp(26px, 6vw, 36px); }
+  .report-pullquote { padding: 28px 24px 28px 24px; font-size: 18px; }
+  .report-callout { padding: 28px 24px; }
+  .report-chart { padding: 24px 16px 20px; }
+}
+
+@media (max-width: 600px) {
+  /* The data table goes horizontal-scroll on narrow viewports.
+     Already wrapped in .report-table-wrap with overflow-x: auto. */
+  .report-table { font-size: 13px; }
+  .report-table thead th,
+  .report-table tbody td { padding: 12px 10px; }
+  .report-footnotes li { font-size: 11px; padding-left: 36px; }
+}
+
+@media (max-width: 480px) {
+  .report-hero { padding: 40px 0 32px; }
+  .report-hero h1 { font-size: clamp(30px, 10vw, 40px); }
+  .report-hero__deck { font-size: 17px; }
+  .report-pullquote { padding: 22px 18px; font-size: 17px; }
+  .report-section { padding: 40px 0; }
+  .report-section h2 { font-size: clamp(24px, 7vw, 32px); }
+  .report-section h3 { font-size: 19px; }
+  .report-section__prose p,
+  .report-section__prose ul li,
+  .report-section__prose ol li { font-size: 16px; }
+  .report-callout { padding: 22px 18px; }
+  .report-callout__lead { font-size: 18px; }
+  .report-chart { padding: 20px 12px 16px; }
+}
